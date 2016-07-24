@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neverwinter Boon Builder</title>
+<style>
+select {width: 190px;}
+td.nowrap {white-space: nowrap;}
+</style>
+</head>
+<body>
+<table>
+<tr><th></th><th>PvP Campaign</th><th></th></tr>
+<tr><td>1</td><td><select id="select0" onchange="update()">
+  <option>none</option>
+  <option>Supply Line</option>
+  <option>Living Wall</option>
+  <option>Legion's Valor</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select1" onchange="update()">
+  <option>none</option>
+  <option>Combat Triage</option>
+  <option>Inspiring Defense</option>
+  <option>Vanguard's Resolve</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select2" onchange="update()">
+  <option>none</option>
+  <option>Versatile Warrior</option>
+  <option>Tactical Redeployment</option>
+  <option>Unbroken Line</option>
+  <option>Wicked Assault</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Sharandar</th><th></th></tr>
+<tr><td>1</td><td><select id="select3" onchange="update()">
+  <option>none</option>
+  <option>Dark Fey Warder</option>
+  <option>Dark Fey Hunter</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select4" onchange="update()">
+  <option>none</option>
+  <option>Fey Elusiveness</option>
+  <option>Fey Precision</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select5" onchange="update()">
+  <option>none</option>
+  <option>Feywilds Fortitude</option>
+  <option>Elven Haste</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select6" onchange="update()">
+  <option>none</option>
+  <option>Elven Tranquility</option>
+  <option>Elven Ferocity</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select7" onchange="update()">
+  <option>none</option>
+  <option>Elven Resolve</option>
+  <option>Fey Thistle</option>
+  <option>Elvish Fury</option>
+  <option>Redcap Brew</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Dread Ring</th><th></th></tr>
+<tr><td>1</td><td><select id="select8" onchange="update()">
+  <option>none</option>
+  <option>Reliquary Keeper's Strength</option>
+  <option>Conjurer's Gambit</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select9" onchange="update()">
+  <option>none</option>
+  <option>Evoker's Thirst</option>
+  <option>Illusory Regeneration</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select10" onchange="update()">
+  <option>none</option>
+  <option>Illusion Shimmer</option>
+  <option>Forbidden Piercing</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select11" onchange="update()">
+  <option>none</option>
+  <option>Enraged Regrowth</option>
+  <option>Shadowtouch</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select12" onchange="update()">
+  <option>none</option>
+  <option>Augmented Thayan Bastion</option>
+  <option>Rampaging Madness</option>
+  <option>Endless Consumption</option>
+  <option>Burning Guidance</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Icewind Dale</th><th></th></tr>
+<tr><td>1</td><td><select id="select13" onchange="update()">
+  <option>none</option>
+  <option>Weathering the Storm</option>
+  <option>Encroaching Tactics</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select14" onchange="update()">
+  <option>none</option>
+  <option>Appreciation of Warmth</option>
+  <option>Refreshing Chill</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select15" onchange="update()">
+  <option>none</option>
+  <option>Rapid Thaw</option>
+  <option>Sleet Skills</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select16" onchange="update()">
+  <option>none</option>
+  <option>Cold Shoulder</option>
+  <option>Cool Resolve</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select17" onchange="update()">
+  <option>none</option>
+  <option>Avalanche</option>
+  <option>Rousing Warmth</option>
+  <option>Winter's Bounty</option>
+  <option>Shared Survival</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Underdark</th><th></th></tr>
+<tr><td>1</td><td><select id="select18" onchange="update()">
+  <option>none</option>
+  <option>Primordial Vitality</option>
+  <option>Primordial Might</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select19" onchange="update()">
+  <option>none</option>
+  <option>Primordial Regenesis</option>
+  <option>Primordial Focus</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select20" onchange="update()">
+  <option>none</option>
+  <option>Drow Meditation</option>
+  <option>Drow Ambush Tactics</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select21" onchange="update()">
+  <option>none</option>
+  <option>Dwarven Footing</option>
+  <option>Dwarven Stamina</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select22" onchange="update()">
+  <option>none</option>
+  <option>Demonic Domination</option>
+  <option>Abyssal Tenacity</option>
+  <option>Demon Slayer</option>
+  <option>Abyssal Strikes</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Tyranny of Dragons</th><th></th></tr>
+<tr><td>1</td><td><select id="select23" onchange="update()">
+  <option>none</option>
+  <option>Dragonheart</option>
+  <option>Dragon's Claws</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select24" onchange="update()">
+  <option>none</option>
+  <option>Dragon's Shadow</option>
+  <option>Dragon's Gaze</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select25" onchange="update()">
+  <option>none</option>
+  <option>Dragonscale Defense</option>
+  <option>Draconic Armorbreaker</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select26" onchange="update()">
+  <option>none</option>
+  <option>Dragon's Greed</option>
+  <option>Dragon's Blood</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select27" onchange="update()">
+  <option>none</option>
+  <option>Dragon's Thirst</option>
+  <option>Dragon's Revival</option>
+  <option>Dragon's Fury</option>
+  <option>Dragon's Grip</option>
+</select></td><td></td></tr>
+<tr><td>6</td><td><select id="select28" onchange="update()">
+  <option>none</option>
+  <option>Dragon's Thirst</option>
+  <option>Dragon's Revival</option>
+  <option>Dragon's Fury</option>
+  <option>Dragon's Grip</option>
+</select></td><td></td></tr>
+<tr><td>7</td><td><select id="select29" onchange="update()">
+  <option>none</option>
+  <option>Dragon's Thirst</option>
+  <option>Dragon's Revival</option>
+  <option>Dragon's Fury</option>
+  <option>Dragon's Grip</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>The Maze Engine</th><th></th></tr>
+<tr><td>1</td><td><select id="select30" onchange="update()">
+  <option>none</option>
+  <option>Abyssal Syphoning</option>
+  <option>Abyssal Regeneration</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select31" onchange="update()">
+  <option>none</option>
+  <option>Demonic Influence</option>
+  <option>Demonic Resilience</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select32" onchange="update()">
+  <option>none</option>
+  <option>Demonic Endurance</option>
+  <option>Demonic Swiftness</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select33" onchange="update()">
+  <option>none</option>
+  <option>Displace Fate</option>
+  <option>Engine Inspiration</option>
+  <option>Baphomet's Might</option>
+  <option>Baleful Clutch</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Elemental Evil</th><th></th></tr>
+<tr><td>1</td><td><select id="select34" onchange="update()">
+  <option>none</option>
+  <option>Wave of Force</option>
+  <option>Unassailable Tide</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select35" onchange="update()">
+  <option>none</option>
+  <option>Heart of Stone</option>
+  <option>Earth's Renewal</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select36" onchange="update()">
+  <option>none</option>
+  <option>Searing Aggression</option>
+  <option>Blazing Resilience</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select37" onchange="update()">
+  <option>none</option>
+  <option>Bolstering Storm</option>
+  <option>Furious Whirlwind</option>
+  <option>Wall of Wind</option>
+  <option>Gale of Retribution</option>
+</select></td><td></td></tr>
+
+<tr><th></th><th>Storm King's Thunder</th><th></th></tr>
+<tr><td>1</td><td><select id="select38" onchange="update()">
+  <option>none</option>
+  <option>Frosty Demeanor</option>
+  <option>Cold Hearted</option>
+</select></td><td></td></tr>
+<tr><td>2</td><td><select id="select39" onchange="update()">
+  <option>none</option>
+  <option>Survival Instincts</option>
+  <option>Hardy Constitution</option>
+</select></td><td></td></tr>
+<tr><td>3</td><td><select id="select40" onchange="update()">
+  <option>none</option>
+  <option>Chill Determination</option>
+  <option>Icy Wrath</option>
+</select></td><td></td></tr>
+<tr><td>4</td><td><select id="select41" onchange="update()">
+  <option>none</option>
+  <option>Vengeful Heat</option>
+  <option>Glacial Strength</option>
+</select></td><td></td></tr>
+<tr><td>5</td><td><select id="select42" onchange="update()">
+  <option>none</option>
+  <option>Chill of Winter</option>
+  <option>Healing Warmth</option>
+  <option>Titan's Affinity</option>
+  <option>Frozen Reflection</option>
+</select></td><td></td></tr>
+
+</table>
+<script>
+var descriptions = {
+    "Supply Line": "You gain 500 Movement while flagged for PvP. Allies within 10 feet of you get half this bonus. (Can not stack with itself.)",
+    "Living Wall": "You gain 250 Defense and 250 Deflect while flagged for PvP.",
+    "Legion's Valor": "You gain 250 Power and 250 Critical Strike while flagged for PvP.",
+    "Combat Triage": "Allies near you who take damage are granted 3000 hit points over 6 seconds while you are flagged for PvP. (Does not stack.)",
+    "Inspiring Defense": "Nearby allies gain up to 10% additional damage resistance as their health decreases while you are flagged for PVP. (Does not stack)",
+    "Vanguard's Resolve": "Players who strike you grant you 400 Power for 8 seconds. Each foe can only add 400 at a time. (Max 2000) ",
+    "Versatile Warrior": "You gain 400 Power and 400 Recovery whenever an ally or enemy is within 20 feet of you while flagged for PvP.",
+    "Tactical Redeployment": "You gain 25% additional movement speed when there are no enemy or allied players within 20 feet of you while flagged for PvP. (This effect does not work if you have recently been damaged by a player)",
+    "Unbroken Line": "You gain 400 Defense for each teammate within 20 feet of you while flagged for PvP. (Max of 5 players)",
+    "Wicked Assault": "You gain 400 Life Steal for each enemy player within 20 feet of you while flagged for PvP. (Max of 5 players)",
+    "Corruption Seeker": "Earn 3% more Black Ice from all sources.",
+    "Grym Depths Seeker": "Chance to gain a Grym coin when killing a player on the Gauntlgrym battleground.",
+    "Glory Seeker": "Earn 5 Glory when killing a player on a Domination map.",
+
+    "Dark Fey Warder": "You gain 400 Defense.",
+    "Dark Fey Hunter": "You gain 400 Power.",
+    "Fey Elusiveness": "You gain 400 Deflect.",
+    "Fey Precision": "You gain 400 Critical Strike.",
+    "Feywilds Fortitude": "Your Max HP is increased by 1600.",
+    "Elven Haste": "You now gain Action Points 3% faster.",
+    "Elven Tranquility": "When being struck by a foe you have a chance to heal yourself for 20000 HP.",
+    "Elven Ferocity": "When striking a foe you have a chance to deal up to 20000 Arcane damage.",
+    "Elven Resolve": "Your Stamina regenerates 10% faster in Combat.",
+    "Fey Thistle": "When you Deflect an attack you deal up to 3000 damage to your attacker.",
+    "Elvish Fury": "When you kill a foe you gain 135 Power for 45 seconds. This buff stacks up to 30 times.",
+    "Redcap Brew": "Potions now heal you for 10% more.",
+
+    "Reliquary Keeper's Strength": "You gain 250 Power and 250 Movement.",
+    "Conjurer's Gambit": "You gain 250 Critical Strike and 250 Movement.",
+    "Evoker's Thirst": "You gain 400 Life Steal.",
+    "Illusory Regeneration": "You gain 400 Regeneration.",
+    "Illusion Shimmer": "You gain 3% Deflection Chance.",
+    "Forbidden Piercing": "You gain 3% Resistance Ignored.",
+    "Enraged Regrowth": "When taking damage you have a chance to heal 20000 Hit Points over a few seconds. After this effect ends you have 4000 more Defense for 10 seconds.",
+    "Shadowtouch": "When dealing damage you have a chance to deal 20000 Necrotic damage over a few seconds. After this effect ends the target receives 25% less healing from spells for 10 seconds.",
+    "Augmented Thayan Bastion": "When taking damage you have a chance to generate a shield that absorbs up to 10000 incoming damage and redirects that damage to a nearby foe. This shield lasts 6 seconds.",
+    "Rampaging Madness": "When you deal damage you gain a stack of \"Madness\". When you reach 50 stacks of \"Madness\" you gain 4000 Power, 4000 Life Steal, and 4000 Regeneration. 10 seconds after gaining this bonus your stacks are reset. You may only gain one stack of \"Madness\" per second.",
+    "Endless Consumption": "When you steal health from your Life Steal stat, it has a chance to steal 3 times as much.",
+    "Burning Guidance": "Your healing spells have a chance to burn enemies near the target for up to 2000 Radiant damage.",
+
+    "Weathering the Storm": "You gain 400 AoE Resist.",
+    "Encroaching Tactics": "You gain 400 Combat Advantage Bonus.",
+    "Appreciation of Warmth": "You gain 400 Incoming Healing Bonus.",
+    "Refreshing Chill": "You gain 400 Stamina/Guard Gain.",
+    "Rapid Thaw": "You gain 400 Recovery.",
+    "Sleet Skills": "You gain 2% Crit Severity.",
+    "Cold Shoulder": "When damaged by a foe you have a chance to proc Cold Shoulder on them, which will reduce the damage of their next attack by up to 2000.",
+    "Cool Resolve": "You gain up to 2000 Power based on how much Stamina or Guard you are missing.",
+    "Avalanche": "When damaged by a foe, chance to gain a stack of Avalanche. At 20 Stacks, taking damage will clear the stacks and deal up to 15000 damage to nearby targets.",
+    "Rousing Warmth": "Chance when Healed to gain up to 3000 damage bonus on next attack.",
+    "Winter's Bounty": "Chance to gain bonus 10% Action Points when killing a target.",
+    "Shared Survival": "Drinking Healing Potions now Heal allies within 35 feet for 10% of that potions value.",
+
+    "Primordial Vitality": "You gain 400 Defense and 1600 Maximum Hit Points.",
+    "Primordial Might": "You gain 400 Power and 1600 Maximum Hit Points.",
+    "Primordial Regenesis": "You gain 400 Life Steal and 1600 Maximum Hit Points.",
+    "Primordial Focus": "You gain 400 Critical Strike and 1600 Maximum Hit Points.",
+    "Drow Meditation": "You gain 1200 Regeneration.",
+    "Drow Ambush Tactics": "Combat Advantage damage bonus is increased by 10%.",
+    "Dwarven Footing": "Control Effects will now have a 5% shorter duration when applied to you.",
+    "Dwarven Stamina": "You now regain Stamina 5% faster.",
+    "Demonic Domination": "Gain 25% Control Bonus versus demons.",
+    "Abyssal Tenacity": "Demons do 5% less damage to you.",
+    "Demon Slayer": "Gain a chance to slay lesser demons outright. This chance runs from 0-5% depending on the demon’s remaining hit points.",
+    "Abyssal Strikes": "Gain +10% Damage versus Demons.",
+
+    "Dragonheart": "Grants 1600 Hit Points.",
+    "Dragon's Claws": "Grants 400 Power.",
+    "Dragon's Shadow": "Grants 400 Deflect.",
+    "Dragon's Gaze": "Grants 400 Critical Strike.",
+    "Dragonscale Defense": "Grants 400 Defense.",
+    "Draconic Armorbreaker": "Grants 400 Armor Penetration.",
+    "Dragon's Greed": "Grants 400 Life Steal Rating.",
+    "Dragon's Blood": "Grants 400 Regen.",
+    "Dragon's Thirst": "Grants 3/4/5% increased Life Steal.",
+    "Dragon's Revival": "Grants 10/12.5/15% increased Incoming Healing.",
+    "Dragon's Fury": "Grants 5/6.5/8% increased Critical Severity.",
+    "Dragon's Grip": "Grants 10/12.5/15% increased Control Strength.",
+
+    "Abyssal Syphoning": "You gain 5% Life Steal Severity.",
+    "Abyssal Regeneration": "You gain 400 Incoming Healing Bonus.",
+    "Demonic Influence": "You gain 400 Combat Advantage Bonus.",
+    "Demonic Resilience": "Control effects will now have 5% shorter duration when applied to you.",
+    "Demonic Endurance": "Your stamina regenerates 10% faster in combat.",
+    "Demonic Swiftness": "You now gain action points 3% faster.",
+    "Displace Fate": "When below 30% health you gain a shield increasing Damage Resistance by 60% for 3 seconds.",
+    "Engine Inspiration": "You healing spells have a chance to heal allies around you for 20,000 Hit Points.",
+    "Baphomet's Might": "When striking a foe you have a chance to gain 2000 Critical Strike bonus for 6 seconds.",
+    "Baleful Clutch": "Grants 10% Increased Control Strength.",
+
+    "Wave of Force": "+300 Power and +2000 Maximum Hit Points",
+    "Unassailable Tide": "+300 Defense and +2000 Maximum Hit Points",
+    "Heart of Stone": "+4% Life Steal Severity Power and +2000 Maximum Hit Points",
+    "Earth's Renewal": "+400 Regeneration and +2000 Maximum Hit Points",
+    "Searing Aggression": "+400 Critical Strike and +2000 Maximum Hit Points",
+    "Blazing Resilience": "+400 Recovery and +2000 Maximum Hit Points",
+    "Bolstering Storm": "Chance to gain bonus 10% Stamina Gain for 10 seconds when killing a target.",
+    "Furious Whirlwind": "Chance to gain 10% bonus Lifesteal Severity for 10 seconds when killing a target.",
+    "Wall of Wind": "When taking damage you have a chance to heal up to 24000 Hit Points over a few seconds. After this effect ends, your Recovery is increased by 1000 for 10 seconds.",
+    "Gale of Retribution": "When taking damage you have a chance to heal up to 24000 Hit Points over a few seconds. After this effect ends, your Critical Strike is increased by 1000 for 10 seconds.",
+
+    "Frosty Demeanor": "You gain 2% Control Resistance and 1000 Maximum Hit Points.",
+    "Cold Hearted": "You gain 2% Live Steal Severity and 1000 Maximum Hit Points.",
+    "Survival Instincts": "You gain 400 Incoming Healing Bonus and 100 Everfrost Resist.",
+    "Hardy Constitution": "You gain 400 Stamina Gain and 100 Everfrost Resist.",
+    "Chill Determination": "You gain up to 2000 Power based on how much Stamina or Guard you are missing.",
+    "Icy Wrath": "Chance when Healed to gain up to 2000 damage bonus on next attack.",
+    "Vengeful Heat": "When you kill a foe you have a chance to deal up to 1500 Fire damage to all nearby enemies.",
+    "Glacial Strength": "Your Max HP is increased by 3200 and 100 Everfrost Resist.",
+    "Chill of Winter": "When striking a foe, you have chance to gain a stack of Icy Chill. At 50 Stacks, your next attack clears all stacks and releases a burst that deals up to 10000 damage to targets close to you. Damage Over Time effects will not trigger this ability.",
+    "Healing Warmth": "Your healing spells have a chance to up to 5 enemeis near the target for up to 4000 damage.",
+    "Titan's Affinity": "Titan Potions now heal you for 20% more.",
+    "Frozen Reflection": "When you Deflect an attack you deal up to 5000 damage to your attacker.",
+
+    "none": ""
+};
+
+function update() {
+    "use strict";
+    var i;
+    var select;
+    var query = "?";
+    for (i = 0; i < 43; i += 1) {
+        select = document.getElementById("select" + i);
+        query += select.selectedIndex;
+        select.parentElement.nextElementSibling.textContent = descriptions[select.value];
+    }
+    history.replaceState(null, null, query);
+}
+
+function initialize() {
+    "use strict";
+    var i;
+    var j;
+    var options;
+    for (i = 0; i < 43; i += 1) {
+        options = document.getElementById("select" + i).options;
+        for (j = 0; j < options.length; j += 1) {
+            options[j].title = descriptions[options[j].text];
+        }
+    }
+    var query = location.search.slice(1);
+    var select;
+    var index;
+    for (i = 0; i < query.length && i < 43; i += 1) {
+        select = document.getElementById("select" + i);
+        index = parseInt(query[i]);
+        if (isNaN(index)) {
+            select.selectedIndex = 0;
+        } else {
+            select.selectedIndex = Math.min(index, select.length - 1);
+        }
+    }
+    update();
+}
+
+initialize();
+</script>
+</body>
+</html>
