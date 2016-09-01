@@ -408,8 +408,11 @@ function update() {
         query += selects[i].selectedIndex;
         selects[i].parentElement.nextElementSibling.textContent = descriptions[selects[i].value];
     }
-
-    history.replaceState(null, null, query);
+    if (query.replace(/0/g, "") === "?") {
+        history.replaceState(null, null, location.protocol + "//" + location.host + location.pathname);
+    } else {
+        history.replaceState(null, null, query);
+    }
 }
 
 function initialize() {
