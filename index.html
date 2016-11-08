@@ -406,7 +406,7 @@ var descriptions = {
     "Vengeful Heat": "When you kill a foe you have a chance to deal up to 2000 Fire damage to all nearby enemies. You also gain 2% Everfrost Damage resistance.",
     "Glacial Strength": "Your Max HP is increased by 3200 and 2% Everfrost Damage resistance.",
     "Chill of Winter": "When striking a foe, you have chance to gain a stack of Icy Chill. At 50 Stacks, your next attack clears all stacks and releases a burst that deals up to 10000/12000/14000 damage to targets close to you. Damage Over Time effects will not trigger this ability.",
-    "Healing Warmth": "Your healing spells have a chance to damage up to 5 enemies near the target for up to 4000/5000/6000 damage.",
+    "Healing Warmth": "When healing allies, your healing spells have a chance to damage up to 5 enemies near the target for up to 4000/5000/6000 damage.",
     "Titan's Affinity": "Healing Potions now heal you for 10/12.5/15% more.",
     "Frozen Reflection": "When you Deflect an attack you deal up to 5000/6000/7000 damage to your attacker.",
 
@@ -415,12 +415,13 @@ var descriptions = {
 
 function update() {
     "use strict";
-    var i;
     var selects = document.getElementsByTagName("select");
     var query = "?";
-    for (i = 0; i < selects.length; i += 1) {
+    var i = 0;
+    while (i < selects.length) {
         query += selects[i].selectedIndex;
         selects[i].parentElement.nextElementSibling.textContent = descriptions[selects[i].value];
+        i += 1;
     }
     if (query.replace(/0/g, "") === "?") {
         history.replaceState(null, null, location.protocol + "//" + location.host + location.pathname);
@@ -431,19 +432,24 @@ function update() {
 
 function initialize() {
     "use strict";
-    var i;
     var selects = document.getElementsByTagName("select");
-    var j;
     var options;
-    for (i = 0; i < selects.length; i += 1) {
+    var i = selects.length;
+    var j;
+    while (i > 0) {
+        i -= 1;
         options = selects[i].options;
-        for (j = 0; j < options.length; j += 1) {
+        j = options.length;
+        while (j > 0) {
+            j -= 1;
             options[j].title = descriptions[options[j].text];
         }
     }
     var query = location.search.slice(1);
+    i = Math.min(query.length, selects.length);
     var index;
-    for (i = 0; i < query.length && i < selects.length; i += 1) {
+    while (i > 0) {
+        i -= 1;
         index = parseInt(query[i]);
         if (isNaN(index) || index >= selects[i].length) {
             index = 0;
