@@ -248,7 +248,7 @@ th {white-space: nowrap;}
 <tr><th></th><th>The Maze Engine</th><th></th></tr>
 <tr><td>1</td><td><select onchange="update()">
   <option>none</option>
-  <option>Abyssal Syphoning</option>
+  <option>Abyssal Siphoning</option>
   <option>Abyssal Regeneration</option>
 </select></td><td></td></tr>
 <tr><td>2</td><td><select onchange="update()">
@@ -296,14 +296,14 @@ th {white-space: nowrap;}
 </table>
 <script>
 var descriptions = {
-    "Supply Line": "You gain 500 Movement while flagged for PvP. Allies within 10 feet of you get half this bonus. (Can not stack with itself.)",
+    "Supply Line": "You gain 500 Movement while flagged for PVP. Allies within 10 feet of you get half this bonus. (Can not stack with itself.)",
     "Living Wall": "You gain 250 Defense and 250 Deflect while flagged for PvP.",
     "Legion's Valor": "You gain 250 Power and 250 Critical Strike while flagged for PvP.",
     "Combat Triage": "Allies near you who take damage are granted 3000 hitpoints over 6 seconds while you are flagged for PvP. (Does not stack.)",
     "Inspiring Defense": "Nearby allies gain up to 10% additional damage resistance as their health decreases while you are flagged for PVP. (Does not stack)",
     "Vanguard's Resolve": "Players who strike you grant you 400 Power for 8 seconds. Each foe can only add 400 at a time. (Max 2000)",
     "Versatile Warrior": "You gain 400 Power and 400 Recovery whenever an ally or enemy is within 20 feet of you while flagged for PvP.",
-    "Tactical Redeployment": "You gain 25% additional movement speed when there are no enemy or allied players within 20 feet of you while flagged for PvP. (This effect does not work if you have recently been damaged by a player)",
+    "Tactical Redeployment": "You gain 25% additional movement speed when there are no enemy or allied players within 20 feet of you while flagged for PvP.  (This effect does not work if you have recently been damaged by a player)",
     "Unbroken Line": "You gain 400 Defense for each teammate within 20 feet of you while flagged for PvP. (Max of 5 players)",
     "Wicked Assault": "You gain 400 Life Steal for each enemy player within 20 feet of you while flagged for PvP. (Max of 5 players)",
     "Corruption Seeker": "Earn 3% more Black Ice from all sources.",
@@ -316,7 +316,7 @@ var descriptions = {
     "Fey Precision": "You gain 400 Critical Strike.",
     "Feywilds Fortitude": "Your Max HP is increased by 1600.",
     "Elven Haste": "You now gain Action Points 3% faster.",
-    "Elven Tranquility": "When being struck by a foe you have a chance to heal yourself for 20000 Hit Points.",
+    "Elven Tranquility": "When being struck by a foe you have a chance to heal yourself for up to 20000 Hit Points.",
     "Elven Ferocity": "When striking a foe you have a chance to deal up to 20000 Arcane damage.",
     "Elven Resolve": "Your Stamina regenerates 10% faster in Combat.",
     "Fey Thistle": "When you Deflect an attack you deal up to 3000 damage to your attacker.",
@@ -329,9 +329,9 @@ var descriptions = {
     "Illusory Regeneration": "You gain 400 Regeneration.",
     "Illusion Shimmer": "You gain 3% Deflect Chance.",
     "Forbidden Piercing": "You gain 3% Resistance Ignored.",
-    "Enraged Regrowth": "When taking damage you have a chance to heal 20000 Hit Points over a few seconds. After this effect ends you have 4000 more Defense for 10 seconds.",
-    "Shadowtouch": "When dealing damage you have a chance to deal 20000 Necrotic damage over a few seconds. After this effect ends the target receives 25% less healing from spells for 10 seconds.",
-    "Augmented Thayan Bastion": "When taking damage you have a chance to generate a shield that absorbs up to 10000 incoming damage and redirects that damage to a nearby foe. This shield lasts 6 seconds.",
+    "Enraged Regrowth": "When taking damage you have a chance to heal up to 20000 Hit Points over a few seconds. After this effect ends you have 4000 more Defense for 10 seconds.",
+    "Shadowtouch": "When dealing damage you have a chance to deal up to 20000 Necrotic damage over a few seconds. After this effect ends the target receives 25% less healing from spells for 10 seconds.",
+    "Augmented Thayan Bastion": "Augmented Thayan Bastion: When taking damage you have a chance to generate a shield that absorbs up to 10000 incoming damage and redirects that damage to a nearby foe. This shield lasts 6 seconds.",
     "Rampaging Madness": "When you deal damage you gain a stack of \"Madness\". When you reach 50 stacks of \"Madness\" you gain 4000 Power, 4000 Life Steal, and 4000 Regeneration. 10 seconds after gaining this bonus your stacks are reset. You may only gain one stack of \"Madness\" per second.",
     "Endless Consumption": "When you steal health from your Life Steal stat, it has a chance to steal 3 times as much.",
     "Burning Guidance": "Your healing spells have a chance to burn enemies near the target for up to 2000 Radiant damage.",
@@ -355,11 +355,11 @@ var descriptions = {
     "Primordial Focus": "You gain 400 Critical Strike and 1600 Maximum Hit Points.",
     "Drow Meditation": "You gain 1200 Regeneration.",
     "Drow Ambush Tactics": "Combat Advantage damage bonus is increased by 10%",
-    "Dwarven Footing": "Control effects will now have a 5% shorter duration when applied to you.",
+    "Dwarven Footing": "Control effects will now have 5% shorter durations when applied to you.",
     "Dwarven Stamina": "You now regain Stamina 5% faster.",
     "Demonic Domination": "Gain 25% Control Bonus versus Demons",
     "Abyssal Tenacity": "Demons do 5% less damage to you.",
-    "Demon Slayer": "You have chance to slay lesser demons outright when attacking them. The chance runs from 0-5% depending on the demon's hit points remaining.",
+    "Demon Slayer": "You have chance to slay lesser demons outright when attacking them. The chance runs from 0-5% depending on the demon's hit points remaning.",
     "Abyssal Strikes": "Gain +10% damage versus Demons.",
 
     "Dragonheart": "Grants 1600 Hit Points.",
@@ -375,7 +375,7 @@ var descriptions = {
     "Dragon's Fury": "Grants 5/6.5/8% increased Critical Severity.",
     "Dragon's Grip": "Grants 10/12.5/15% increased Control Strength.",
 
-    "Abyssal Syphoning": "You gain 5% Life Steal Severity.",
+    "Abyssal Siphoning": "You gain 5% Life Steal Severity.",
     "Abyssal Regeneration": "You gain 400 Incoming Healing Bonus.",
     "Demonic Influence": "You gain 400 Combat Advantage Bonus.",
     "Demonic Resilience": "Control effects will now have 5% shorter durations when applied to you.",
@@ -399,12 +399,12 @@ var descriptions = {
 
     "Frosty Demeanor": "You gain 2% Control Resistance and 1000 Maximum Hit Points.",
     "Cold Hearted": "You gain 2% Life Steal Severity and 1000 Maximum Hit Points.",
-    "Hardy Constitution": "You gain 400 Stamina Gain and 2% Everfrost Damage resistance.",
-    "Survival Instincts": "You gain 400 Incoming Healing Bonus and 2% Everfrost Damage resistance",
+    "Hardy Constitution": "You gain 400 Stamina Gain and 2% Everfrost Damage Resistance.",
+    "Survival Instincts": "You gain 400 Incoming Healing Bonus and 2% Everfrost Damage Resistance.",
     "Chill Determination": "You gain up to 2000 Recovery based on how much Stamina or Guard you are missing.",
     "Icy Wrath": "Chance when taking damage to gain up to 2000 bonus damage on next attack.",
-    "Vengeful Heat": "When you kill a foe you have a chance to deal up to 2000 Fire damage to all nearby enemies. You also gain 2% Everfrost Damage resistance.",
-    "Glacial Strength": "Your Max HP is increased by 3200 and 2% Everfrost Damage resistance.",
+    "Vengeful Heat": "When you kill a foe you have a chance to deal up to 2000 Fire damage to all nearby enemies. You also gain 2% Everfrost Damage Resistance.",
+    "Glacial Strength": "Your Max HP is increased by 3200 and 2% Everfrost Damage Resistance.",
     "Chill of Winter": "When striking a foe, you have chance to gain a stack of Icy Chill. At 50 Stacks, your next attack clears all stacks and releases a burst that deals up to 10000/12000/14000 damage to targets close to you. Damage Over Time effects will not trigger this ability.",
     "Healing Warmth": "When healing allies, your healing spells have a chance to damage up to 5 enemies near the target for up to 4000/5000/6000 damage.",
     "Titan's Affinity": "Healing Potions now heal you for 10/12.5/15% more.",
