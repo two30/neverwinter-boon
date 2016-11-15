@@ -6,6 +6,9 @@
 <style>
 select {width: 190px;}
 th {white-space: nowrap;}
+span.keyword {color: green;} /* #a4ff5e in-game */
+span.rankup {color: green;} /* #a4ff5e in-game */
+span.note {color: red;}
 </style>
 </head>
 <body>
@@ -296,122 +299,143 @@ th {white-space: nowrap;}
 </table>
 <script>
 var descriptions = {
-    "Supply Line": "You gain 500 Movement while flagged for PVP. Allies within 10 feet of you get half this bonus. (Can not stack with itself.)",
-    "Living Wall": "You gain 250 Defense and 250 Deflect while flagged for PvP.",
-    "Legion's Valor": "You gain 250 Power and 250 Critical Strike while flagged for PvP.",
-    "Combat Triage": "Allies near you who take damage are granted 3000 hitpoints over 6 seconds while you are flagged for PvP. (Does not stack.)",
-    "Inspiring Defense": "Nearby allies gain up to 10% additional damage resistance as their health decreases while you are flagged for PVP. (Does not stack)",
-    "Vanguard's Resolve": "Players who strike you grant you 400 Power for 8 seconds. Each foe can only add 400 at a time. (Max 2000)",
-    "Versatile Warrior": "You gain 400 Power and 400 Recovery whenever an ally or enemy is within 20 feet of you while flagged for PvP.",
-    "Tactical Redeployment": "You gain 25% additional movement speed when there are no enemy or allied players within 20 feet of you while flagged for PvP.  (This effect does not work if you have recently been damaged by a player)",
-    "Unbroken Line": "You gain 400 Defense for each teammate within 20 feet of you while flagged for PvP. (Max of 5 players)",
-    "Wicked Assault": "You gain 400 Life Steal for each enemy player within 20 feet of you while flagged for PvP. (Max of 5 players)",
-    "Corruption Seeker": "Earn 3% more Black Ice from all sources.",
-    "Grym Depths Seeker": "Chance to gain a Grym coin when killing a player on the Gauntlgrym battleground.",
-    "Glory Seeker": "Earn 5 Glory when killing a player on a Domination map.",
-
-    "Dark Fey Warder": "You gain 400 Defense.",
-    "Dark Fey Hunter": "You gain 400 Power.",
-    "Fey Elusiveness": "You gain 400 Deflect.",
-    "Fey Precision": "You gain 400 Critical Strike.",
-    "Feywilds Fortitude": "Your Max HP is increased by 1600.",
-    "Elven Haste": "You now gain Action Points 3% faster.",
-    "Elven Tranquility": "When being struck by a foe you have a chance to heal yourself for up to 20000 Hit Points.",
-    "Elven Ferocity": "When striking a foe you have a chance to deal up to 20000 Arcane damage.",
-    "Elven Resolve": "Your Stamina regenerates 10% faster in Combat.",
-    "Fey Thistle": "When you Deflect an attack you deal up to 3000 damage to your attacker.",
-    "Elvish Fury": "When you kill a foe you gain 135 Power for 45 seconds. This buff stacks up to 30 times.",
-    "Redcap Brew": "Potions now heal you for 10% more.",
-
-    "Reliquary Keeper's Strength": "You gain 250 Power and 250 Movement.",
-    "Conjurer's Gambit": "You gain 250 Critical Strike and 250 Movement.",
-    "Evoker's Thirst": "You gain 400 Life Steal.",
-    "Illusory Regeneration": "You gain 400 Regeneration.",
-    "Illusion Shimmer": "You gain 3% Deflect Chance.",
-    "Forbidden Piercing": "You gain 3% Resistance Ignored.",
-    "Enraged Regrowth": "When taking damage you have a chance to heal up to 20000 Hit Points over a few seconds. After this effect ends you have 4000 more Defense for 10 seconds.",
-    "Shadowtouch": "When dealing damage you have a chance to deal up to 20000 Necrotic damage over a few seconds. After this effect ends the target receives 25% less healing from spells for 10 seconds.",
-    "Augmented Thayan Bastion": "Augmented Thayan Bastion: When taking damage you have a chance to generate a shield that absorbs up to 10000 incoming damage and redirects that damage to a nearby foe. This shield lasts 6 seconds.",
-    "Rampaging Madness": "When you deal damage you gain a stack of \"Madness\". When you reach 50 stacks of \"Madness\" you gain 4000 Power, 4000 Life Steal, and 4000 Regeneration. 10 seconds after gaining this bonus your stacks are reset. You may only gain one stack of \"Madness\" per second.",
-    "Endless Consumption": "When you steal health from your Life Steal stat, it has a chance to steal 3 times as much.",
-    "Burning Guidance": "Your healing spells have a chance to burn enemies near the target for up to 2000 Radiant damage.",
-
-    "Weathering the Storm": "You gain 400 AoE Resist.",
-    "Encroaching Tactics": "You gain 400 Combat Advantage Bonus.",
-    "Appreciation of Warmth": "You gain 400 Incoming Healing Bonus.",
-    "Refreshing Chill": "You gain 400 Stamina Gain.",
-    "Rapid Thaw": "You gain 400 Recovery.",
-    "Sleet Skills": "You gain 2% Critical Severity.",
-    "Cold Shoulder": "When damaged by a foe you have a chance to proc Cold Shoulder on them, which will reduce the damage of their next attack by up to 2000.",
-    "Cool Resolve": "You gain up to 2000 Power based on how much Stamina or Guard you are missing.",
-    "Avalanche": "When damaged by a foe, chance to gain a stack of Avalanche. At 20 Stacks, taking damage will clear the stacks and deal up to 15000 damage to nearby targets. Damage Over Time effects will not trigger this ability.",
-    "Rousing Warmth": "Chance when Healed to gain up to 3000 damage bonus on next attack.",
-    "Winter's Bounty": "Chance to gain bonus 10% Action Points when killing a target.",
-    "Shared Survival": "Drinking Healing Potions now Heal allies within 35 feet for 10% of that potions value.",
-
-    "Primordial Vitality": "You gain 400 Defense and 1600 Maximum Hit Points.",
-    "Primordial Might": "You gain 400 Power and 1600 Maximum Hit Points.",
-    "Primordial Regenesis": "You gain 400 Life Steal and 1600 Maximum Hit Points.",
-    "Primordial Focus": "You gain 400 Critical Strike and 1600 Maximum Hit Points.",
-    "Drow Meditation": "You gain 1200 Regeneration.",
-    "Drow Ambush Tactics": "Combat Advantage damage bonus is increased by 10%",
-    "Dwarven Footing": "Control effects will now have 5% shorter durations when applied to you.",
-    "Dwarven Stamina": "You now regain Stamina 5% faster.",
-    "Demonic Domination": "Gain 25% Control Bonus versus Demons",
-    "Abyssal Tenacity": "Demons do 5% less damage to you.",
-    "Demon Slayer": "You have chance to slay lesser demons outright when attacking them. The chance runs from 0-5% depending on the demon's hit points remaning.",
-    "Abyssal Strikes": "Gain +10% damage versus Demons.",
-
-    "Dragonheart": "Grants 1600 Hit Points.",
-    "Dragon's Claws": "Grants 400 Power.",
-    "Dragon's Shadow": "Grants 400 Deflect.",
-    "Dragon's Gaze": "Grants 400 Critical Strike.",
-    "Dragonscale Defense": "Grants 400 Defense.",
-    "Draconic Armorbreaker": "Grants 400 Armor Penetration.",
-    "Dragon's Greed": "Grants 400 Life Steal Rating.",
-    "Dragon's Blood": "Grants 400 Regen.",
-    "Dragon's Thirst": "Grants 3/4/5% increased Life Steal. [Bugged: actually 4/5/6%]",
-    "Dragon's Revival": "Grants 10/12.5/15% increased Incoming Healing.",
-    "Dragon's Fury": "Grants 5/6.5/8% increased Critical Severity.",
-    "Dragon's Grip": "Grants 10/12.5/15% increased Control Strength.",
-
-    "Abyssal Siphoning": "You gain 5% Life Steal Severity.",
-    "Abyssal Regeneration": "You gain 400 Incoming Healing Bonus.",
-    "Demonic Influence": "You gain 400 Combat Advantage Bonus.",
-    "Demonic Resilience": "Control effects will now have 5% shorter durations when applied to you.",
-    "Demonic Endurance": "Your Stamina regenerates 10% faster in Combat.",
-    "Demonic Swiftness": "You now gain Action Points 3% faster.",
-    "Displace Fate": "When below 30% health you gain a shield increasing Damage Resistance by 60% for 3 seconds. [Bugged: causes character to gain the visual effect of a Bloodtheft enchant]",
-    "Engine Inspiration": "Your healing spells have a chance to heal allies around you for 20,000 hit points.",
-    "Baphomet's Might": "When striking a foe you have a chance to gain 2000 Critical Strike bonus for 6 seconds.",
-    "Baleful Clutch": "Grants 10% increased Control Strength.",
-
-    "Wave of Force": "You gain 300 Power and 2000 Maximum Hit Points.",
-    "Unassailable Tide": "You gain 300 Defense and 2000 Maximum Hit Points.",
-    "Heart of Stone": "You gain 4% Life Steal Severity and 2000 Maximum Hit Points.",
-    "Earth's Renewal": "You gain 400 Regeneration and 2000 Maximum Hit Points.",
-    "Searing Aggression": "You gain 400 Critical Strike and 2000 Maximum Hit Points.",
-    "Blazing Resilience": "You gain 400 Recovery and 2000 Maximum Hit Points.",
-    "Bolstering Storm": "Chance to gain bonus 10% Stamina Gain for 10 seconds when killing a target.",
-    "Furious Whirlwind": "Chance to gain bonus 10% Lifesteal Severity for 10 seconds when killing a target.",
-    "Wall of Wind": "When taking damage you have a chance to heal up to 24000 Hit Points over a few seconds. After this effect ends your Recovery is increased by 1000 for 10 seconds.",
-    "Gale of Retribution": "When taking damage you have a chance to heal up to 24000 Hit Points over a few seconds. After this effect ends your Critical Strike is increased by 1000 for 10 seconds.",
-
-    "Frosty Demeanor": "You gain 2% Control Resistance and 1000 Maximum Hit Points.",
-    "Cold Hearted": "You gain 2% Life Steal Severity and 1000 Maximum Hit Points.",
-    "Hardy Constitution": "You gain 400 Stamina Gain and 2% Everfrost Damage Resistance.",
-    "Survival Instincts": "You gain 400 Incoming Healing Bonus and 2% Everfrost Damage Resistance.",
-    "Chill Determination": "You gain up to 2000 Recovery based on how much Stamina or Guard you are missing.",
-    "Icy Wrath": "Chance when taking damage to gain up to 2000 bonus damage on next attack.",
-    "Vengeful Heat": "When you kill a foe you have a chance to deal up to 2000 Fire damage to all nearby enemies. You also gain 2% Everfrost Damage Resistance.",
-    "Glacial Strength": "Your Max HP is increased by 3200 and 2% Everfrost Damage Resistance.",
-    "Chill of Winter": "When striking a foe, you have chance to gain a stack of Icy Chill. At 50 Stacks, your next attack clears all stacks and releases a burst that deals up to 10000/12000/14000 damage to targets close to you. Damage Over Time effects will not trigger this ability.",
-    "Healing Warmth": "When healing allies, your healing spells have a chance to damage up to 5 enemies near the target for up to 4000/5000/6000 damage.",
-    "Titan's Affinity": "Healing Potions now heal you for 10/12.5/15% more.",
-    "Frozen Reflection": "When you Deflect an attack you deal up to 5000/6000/7000 damage to your attacker.",
-
-    "none": ""
+    "Frosty Demeanor": {raw: "You gain 2% {k:ControlResist} and 1000 {k:MaxHP}."},
+    "Cold Hearted": {raw: "You gain 2% {k:rLifestealSeverity} and 1000 {k:MaxHP}."},
+    "Hardy Constitution": {raw: "You gain 400 Stamina Gain and 2% Everfrost Damage Resistance."},
+    "Survival Instincts": {raw: "You gain 400 Incoming Healing Bonus and 2% Everfrost Damage Resistance."},
+    "Chill Determination": {raw: "You gain up to 2000 Recovery based on how much Stamina or Guard you are missing."},
+    "Icy Wrath": {raw: "Chance when taking damage to gain up to 2000 bonus damage on next attack."},
+    "Vengeful Heat": {raw: "When you kill a foe you have a chance to deal up to 2000 Fire damage to all nearby enemies. You also gain 2% Everfrost Damage Resistance."},
+    "Glacial Strength": {raw: "Your Max HP is increased by 3200 and 2% Everfrost Damage Resistance."},
+    "Chill of Winter": {raw: "When striking a foe, you have chance to gain a stack of Icy Chill. At 50 Stacks, your next attack clears all stacks and releases a burst that deals up to <b>10000/12000/14000</b> damage to targets close to you.<br><br>{k:DoT} effects will not trigger this ability."},
+    "Healing Warmth": {raw: "When healing allies, your healing spells have a chance to damage up to 5 enemies near the target for up to <b>4000/5000/6000</b> damage."},
+    "Titan's Affinity": {raw: "Healing Potions now heal you for <b>10/12.5/15%</b> more."},
+    "Frozen Reflection": {raw: "When you Deflect an attack you deal up to <b>5000/6000/7000</b> damage to your attacker."},
+    "Supply Line": {raw: "You gain 500 Movement while flagged for PVP. Allies within 10 feet of you get half this bonus. (Can not stack with itself.)"},
+    "Living Wall": {raw: "You gain 250 Defense and 250 Deflect while flagged for PvP."},
+    "Legion's Valor": {raw: "You gain 250 Power and 250 Critical Strike while flagged for PvP."},
+    "Combat Triage": {raw: "Allies near you who take damage are granted 3000 hitpoints over 6 seconds while you are flagged for PvP. (Does not stack.)"},
+    "Inspiring Defense": {raw: "Nearby allies gain up to 10% additional damage resistance as their health decreases while you are flagged for PVP. (Does not stack)"},
+    "Vanguard's Resolve": {raw: "Players who strike you grant you 400 Power for 8 seconds. Each foe can only add 400 at a time. (Max 2000)"},
+    "Versatile Warrior": {raw: "You gain 400 Power and 400 Recovery whenever an ally or enemy is within 20 feet of you while flagged for PvP."},
+    "Tactical Redeployment": {raw: "You gain 25% additional movement speed when there are no enemy or allied players within 20 feet of you while flagged for PvP.  (This effect does not work if you have recently been damaged by a player)"},
+    "Unbroken Line": {raw: "You gain 400 Defense for each teammate within 20 feet of you while flagged for PvP. (Max of 5 players)"},
+    "Wicked Assault": {raw: "You gain 400 Life Steal for each enemy player within 20 feet of you while flagged for PvP. (Max of 5 players)"},
+    "Corruption Seeker": {raw: "Earn 3% more Black Ice from all sources."},
+    "Grym Depths Seeker": {raw: "Chance to gain a Grym coin when killing a player on the Gauntlgrym battleground."},
+    "Glory Seeker": {raw: "Earn 5 Glory when killing a player on a Domination map."},
+    "Dark Fey Warder": {raw: "You gain 400 Defense."},
+    "Dark Fey Hunter": {raw: "You gain 400 Power."},
+    "Fey Elusiveness": {raw: "You gain 400 Deflect."},
+    "Fey Precision": {raw: "You gain 400 Critical Strike."},
+    "Feywilds Fortitude": {raw: "Your Max HP is increased by 1600."},
+    "Elven Haste": {raw: "You now gain Action Points 3% faster."},
+    "Elven Tranquility": {raw: "When being struck by a foe you have a chance to heal yourself for up to 20000 {k:hp}."},
+    "Elven Ferocity": {raw: "When striking a foe you have a chance to deal up to 20000 Arcane damage."},
+    "Elven Resolve": {raw: "Your Stamina regenerates 10% faster in Combat."},
+    "Fey Thistle": {raw: "When you Deflect an attack you deal up to 3000 damage to your attacker."},
+    "Elvish Fury": {raw: "When you kill a foe you gain 135 Power for 45 seconds. This buff stacks up to 30 times."},
+    "Redcap Brew": {raw: "Potions now heal you for 10% more."},
+    "Reliquary Keeper's Strength": {raw: "You gain 250 Power and 250 Movement."},
+    "Conjurer's Gambit": {raw: "You gain 250 Critical Strike and 250 Movement."},
+    "Evoker's Thirst": {raw: "You gain 400 Life Steal."},
+    "Illusory Regeneration": {raw: "You gain 400 Regeneration."},
+    "Illusion Shimmer": {raw: "You gain 3% Deflect Chance."},
+    "Forbidden Piercing": {raw: "You gain 3% Resistance Ignored."},
+    "Enraged Regrowth": {raw: "When taking damage you have a chance to heal up to 20000 {k:HP} over a few seconds. After this effect ends you have 4000 more Defense for 10 seconds."},
+    "Shadowtouch": {raw: "When dealing damage you have a chance to deal up to 20000 Necrotic damage over a few seconds. After this effect ends the target receives 25% less healing from spells for 10 seconds."},
+    "Augmented Thayan Bastion": {raw: "Augmented Thayan Bastion: When taking damage you have a chance to generate a shield that absorbs up to 10000 incoming damage and redirects that damage to a nearby foe. This shield lasts 6 seconds."},
+    "Rampaging Madness": {raw: "When you deal damage you gain a stack of \"Madness\". When you reach 50 stacks of \"Madness\" you gain 4000 Power, 4000 Life Steal, and 4000 Regeneration. 10 seconds after gaining this bonus your stacks are reset. You may only gain one stack of \"Madness\" per second."},
+    "Endless Consumption": {raw: "When you steal health from your Life Steal stat, it has a chance to steal 3 times as much."},
+    "Burning Guidance": {raw: "Your healing spells have a chance to burn enemies near the target for up to 2000 Radiant damage."},
+    "Weathering the Storm": {raw: "You gain 400 AoE Resist."},
+    "Encroaching Tactics": {raw: "You gain 400 Combat Advantage Bonus."},
+    "Appreciation of Warmth": {raw: "You gain 400 Incoming Healing Bonus."},
+    "Refreshing Chill": {raw: "You gain 400 Stamina Gain."},
+    "Rapid Thaw": {raw: "You gain 400 Recovery."},
+    "Sleet Skills": {raw: "You gain 2% Critical Severity."},
+    "Cold Shoulder": {raw: "When damaged by a foe you have a chance to proc Cold Shoulder on them, which will reduce the damage of their next attack by up to 2000."},
+    "Cool Resolve": {raw: "You gain up to 2000 Power based on how much Stamina or Guard you are missing."},
+    "Avalanche": {raw: "When damaged by a foe, chance to gain a stack of Avalanche. At 20 Stacks, taking damage will clear the stacks and deal up to 15000 damage to nearby targets.<br><br>{k:DoT} effects will not trigger this ability."},
+    "Rousing Warmth": {raw: "Chance when {k:healed} to gain up to 3000 damage bonus on next attack."},
+    "Winter's Bounty": {raw: "Chance to gain bonus 10% {k:APs} when killing a target."},
+    "Shared Survival": {raw: "Drinking Healing Potions now {k:heal} allies within 35 feet for 10% of that potions value."},
+    "Primordial Vitality": {raw: "You gain 400 Defense and 1600 Maximum Hit Points."},
+    "Primordial Might": {raw: "You gain 400 Power and 1600 Maximum Hit Points."},
+    "Primordial Regenesis": {raw: "You gain 400 Life Steal and 1600 Maximum Hit Points."},
+    "Primordial Focus": {raw: "You gain 400 Critical Strike and 1600 Maximum Hit Points."},
+    "Drow Meditation": {raw: "You gain 1200 Regeneration."},
+    "Drow Ambush Tactics": {raw: "Combat Advantage damage bonus is increased by 10%"},
+    "Dwarven Footing": {raw: "Control effects will now have 5% shorter durations when applied to you."},
+    "Dwarven Stamina": {raw: "You now regain Stamina 5% faster."},
+    "Demonic Domination": {raw: "Gain 25% Control Bonus versus Demons"},
+    "Abyssal Tenacity": {raw: "Demons do 5% less damage to you."},
+    "Demon Slayer": {raw: "You have chance to slay lesser demons outright when attacking them. The chance runs from 0-5% depending on the demon's hit points remaning."},
+    "Abyssal Strikes": {raw: "Gain +10% damage versus Demons."},
+    "Dragonheart": {raw: "Grants <b>1600</b> Hit Points."},
+    "Dragon's Claws": {raw: "Grants <b>400</b> Power."},
+    "Dragon's Shadow": {raw: "Grants <b>400</b> Deflect."},
+    "Dragon's Gaze": {raw: "Grants <b>400</b> Critical Strike."},
+    "Dragonscale Defense": {raw: "Grants <b>400</b> Defense."},
+    "Draconic Armorbreaker": {raw: "Grants <b>400</b> Armor Penetration."},
+    "Dragon's Greed": {raw: "Grants <b>400</b> Life Steal Rating."},
+    "Dragon's Blood": {raw: "Grants <b>400</b> Regen."},
+    "Dragon's Thirst": {raw: "Grants <b>3/4/5%</b> increased Life Steal.", note: "[Bugged: actually 4/5/6%]"},
+    "Dragon's Revival": {raw: "Grants <b>10/12.5/15%</b> increased Incoming Healing."},
+    "Dragon's Fury": {raw: "Grants <b>5/6.5/8%</b> increased Critical Severity."},
+    "Dragon's Grip": {raw: "Grants <b>10/12.5/15%</b> increased Control Strength."},
+    "Abyssal Siphoning": {raw: "You gain 5% Life Steal Severity."},
+    "Abyssal Regeneration": {raw: "You gain 400 Incoming Healing Bonus."},
+    "Demonic Influence": {raw: "You gain 400 Combat Advantage Bonus."},
+    "Demonic Resilience": {raw: "Control effects will now have 5% shorter durations when applied to you."},
+    "Demonic Endurance": {raw: "Your Stamina regenerates 10% faster in Combat."},
+    "Demonic Swiftness": {raw: "You now gain Action Points 3% faster."},
+    "Displace Fate": {raw: "When below 30% health you gain a shield increasing Damage Resistance by 60% for 3 seconds.", note: "[Bugged: causes character to gain the visual effect of a Bloodtheft enchant]"},
+    "Engine Inspiration": {raw: "Your healing spells have a chance to heal allies around you for 20,000 hit points."},
+    "Baphomet's Might": {raw: "When striking a foe you have a chance to gain 2000 Critical Strike bonus for 6 seconds."},
+    "Baleful Clutch": {raw: "Grants 10% increased Control Strength."},
+    "Wave of Force": {raw: "You gain 300 Power and 2000 Maximum Hit Points."},
+    "Unassailable Tide": {raw: "You gain 300 Defense and 2000 Maximum Hit Points."},
+    "Heart of Stone": {raw: "You gain 4% Life Steal Severity and 2000 Maximum Hit Points."},
+    "Earth's Renewal": {raw: "You gain 400 Regeneration and 2000 Maximum Hit Points."},
+    "Searing Aggression": {raw: "You gain 400 Critical Strike and 2000 Maximum Hit Points."},
+    "Blazing Resilience": {raw: "You gain 400 Recovery and 2000 Maximum Hit Points."},
+    "Bolstering Storm": {raw: "Chance to gain bonus 10% Stamina Gain for 10 seconds when killing a target."},
+    "Furious Whirlwind": {raw: "Chance to gain bonus 10% Lifesteal Severity for 10 seconds when killing a target."},
+    "Wall of Wind": {raw: "When taking damage you have a chance to heal up to 24000 {k:HP} over a few seconds. After this effect ends your Recovery is increased by 1000 for 10 seconds."},
+    "Gale of Retribution": {raw: "When taking damage you have a chance to heal up to 24000 {k:HP} over a few seconds. After this effect ends your Critical Strike is increased by 1000 for 10 seconds."},
+    "none": {"raw": ""}
 };
+
+function clean(string) {
+    "use strict";
+    string = string.replace(/<b>/gi, "");
+    string = string.replace(/<\/b>/gi, "");
+    string = string.replace(/<span\sclass="keyword">/gi, "");
+    string = string.replace(/<span\sclass="rankup">/gi, "");
+    string = string.replace(/<\/span>/gi, "");
+    if (string.search("<") > -1) {
+        console.log(string);
+    }
+    return string;
+}
+
+function markup(string) {
+    "use strict";
+    string = string.replace(/\{k:aps\}/gi, "<span class=\"keyword\">Action Points</span>");
+    string = string.replace(/\{k:controlresist\}/gi, "<span class=\"keyword\">Control Resistance</span>");
+    string = string.replace(/\{k:dot\}/gi, "<span class=\"keyword\">Damage Over Time</span>");
+    string = string.replace(/\{k:heal\}/gi, "<span class=\"keyword\">Heal</span>");
+    string = string.replace(/\{k:healed\}/gi, "<span class=\"keyword\">Healed</span>");
+    string = string.replace(/\{k:hp\}/gi, "<span class=\"keyword\">Hit Points</span>");
+    string = string.replace(/\{k:maxhp\}/gi, "<span class=\"keyword\">Maximum Hit Points</span>");
+    string = string.replace(/\{k:rlifestealseverity\}/gi, "<span class=\"rankup\">Life Steal Severity</span>");
+    string = string.replace(/<br>/gi, " ");
+    if (string.search("{") > -1) {
+        console.log(string);
+    }
+    return string;
+}
 
 function update() {
     "use strict";
@@ -420,7 +444,7 @@ function update() {
     var i = 0;
     while (i < selects.length) {
         query += selects[i].selectedIndex;
-        selects[i].parentElement.nextElementSibling.textContent = descriptions[selects[i].value];
+        selects[i].parentElement.nextElementSibling.innerHTML = descriptions[selects[i].value].markup;
         i += 1;
     }
     if (query.replace(/0/g, "") === "?") {
@@ -432,9 +456,21 @@ function update() {
 
 function initialize() {
     "use strict";
+    var keys = Object.keys(descriptions);
+    var i = keys.length;
+    var feat;
+    while (i > 0) {
+        i -= 1;
+        feat = keys[i];
+        descriptions[feat].markup = markup(descriptions[feat].raw);
+        descriptions[feat].clean = clean(descriptions[feat].markup);
+        if (descriptions[feat].note) {
+            descriptions[feat].markup += " <span class=\"note\">" + descriptions[feat].note + "</span>";
+        }
+    }
     var selects = document.getElementsByTagName("select");
     var options;
-    var i = selects.length;
+    i = selects.length;
     var j;
     while (i > 0) {
         i -= 1;
@@ -442,7 +478,7 @@ function initialize() {
         j = options.length;
         while (j > 0) {
             j -= 1;
-            options[j].title = descriptions[options[j].text];
+            options[j].title = descriptions[options[j].text].clean;
         }
     }
     var query = location.search.slice(1);
